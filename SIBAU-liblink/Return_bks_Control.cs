@@ -30,6 +30,7 @@ namespace SIBAU_liblink
             textBox4.Clear();
             textBox6.Clear();
             textBox5.Clear();
+            comboBox1.SelectedIndex = -1;
             DTP1.Value = DateTime.Today;
             DTP2.Value = DateTime.Today;
         }
@@ -40,8 +41,7 @@ namespace SIBAU_liblink
             SqlConnection con = new SqlConnection(dcon);
             string insertQuery = @"INSERT INTO ReturnedBooks(StudentID, StudentName, Department, Semester, BookID, BookName, ReturnDate, DueDate,Fine)
                                VALUES 
-                               (@StudentID, @StudentName, @Department, @Semester, @BookID, @BookName, @ReturnDate, @DueDate,@Fine);
-                               SELECT SCOPE_IDENTITY();";
+                               (@StudentID, @StudentName, @Department, @Semester, @BookID, @BookName, @ReturnDate, @DueDate,@Fine)";
             string updateBookQty = "UPDATE Books SET Quantity = Quantity + 1 WHERE BookID = @BookID AND BookName = @BookName";
             string deleteQuery = "DELETE FROM IssuedBooks WHERE StudentID = @StudentID AND BookID = @BookID";
             DateTime returnDate = DTP1.Value;

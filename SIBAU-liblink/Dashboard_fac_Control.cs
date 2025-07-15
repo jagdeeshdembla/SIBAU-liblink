@@ -20,8 +20,8 @@ namespace SIBAU_liblink
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             // FacultyBarChart();
-           // DisplayTBBooks();
-           // DisplayTRBooks();
+            // DisplayTBBooks();
+            // DisplayTRBooks();
         }
 
         private void FacultyBarChart()
@@ -110,6 +110,11 @@ namespace SIBAU_liblink
             adpt.Fill(dt);
             label_trbk.Text = dt.Rows.Count.ToString();
             con.Close();
+        }
+
+        private void Dashboard_fac_Control_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -49,7 +49,7 @@
             panel_top.Dock = DockStyle.Top;
             panel_top.Location = new Point(0, 0);
             panel_top.Name = "panel_top";
-            panel_top.Size = new Size(884, 100);
+            panel_top.Size = new Size(884, 78);
             panel_top.TabIndex = 96;
             // 
             // label3
@@ -57,11 +57,11 @@
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(355, 7);
+            label3.Location = new Point(374, 7);
             label3.Name = "label3";
-            label3.Size = new Size(247, 37);
+            label3.Size = new Size(184, 28);
             label3.TabIndex = 95;
             label3.Text = "Total Members";
             // 
@@ -71,7 +71,7 @@
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
             pictureBox8.Location = new Point(4, 4);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(140, 92);
+            pictureBox8.Size = new Size(100, 70);
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox8.TabIndex = 94;
             pictureBox8.TabStop = false;
@@ -93,7 +93,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(499, 11);
+            label4.Location = new Point(517, 11);
             label4.Name = "label4";
             label4.Size = new Size(22, 24);
             label4.TabIndex = 98;
@@ -106,7 +106,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(325, 11);
+            label1.Location = new Point(343, 11);
             label1.Name = "label1";
             label1.Size = new Size(166, 24);
             label1.TabIndex = 97;
@@ -117,9 +117,9 @@
             DGV_tms.BackgroundColor = Color.White;
             DGV_tms.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_tms.Dock = DockStyle.Fill;
-            DGV_tms.Location = new Point(0, 100);
+            DGV_tms.Location = new Point(0, 78);
             DGV_tms.Name = "DGV_tms";
-            DGV_tms.Size = new Size(884, 369);
+            DGV_tms.Size = new Size(884, 391);
             DGV_tms.TabIndex = 98;
             // 
             // Total_mbs_Control

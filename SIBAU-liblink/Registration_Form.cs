@@ -23,6 +23,10 @@ namespace SIBAU_liblink
         public Registration_Form()
         {
             InitializeComponent();
+
+            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
+            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
+
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.Region = new Region(GetCirclePath(pictureBox4.ClientRectangle));
 
@@ -37,12 +41,12 @@ namespace SIBAU_liblink
         private void textBox5_MouseHover(object sender, EventArgs e)
         {
 
-            if (textBox5.PlaceholderText == "First Name")
+            if (textBox5.PlaceholderText == "User-ID")
             {
                 textBox5.PlaceholderText = "";
                 textBox5.ForeColor = Color.Black;
-                tooltip.SetToolTip(textBox5, "Enter Your Firt Name");
-
+                tooltip.SetToolTip(textBox5, "Enter Your User-ID");
+                 
             }
         }
 
@@ -50,7 +54,7 @@ namespace SIBAU_liblink
         {
             if (textBox5.PlaceholderText == "")
             {
-                textBox5.PlaceholderText = "First Name";
+                textBox5.PlaceholderText = "User-ID";
                 textBox5.ForeColor = Color.Black;
 
 
@@ -59,11 +63,11 @@ namespace SIBAU_liblink
 
         private void textBox7_MouseHover(object sender, EventArgs e)
         {
-            if (textBox7.PlaceholderText == "Last Name")
+            if (textBox7.PlaceholderText == "Full Name")
             {
                 textBox7.PlaceholderText = "";
                 textBox7.ForeColor = Color.Black;
-                tooltip.SetToolTip(textBox7, "Enter Your Last Name");
+                tooltip.SetToolTip(textBox7, "Enter Your Full Name");
 
             }
 
@@ -73,7 +77,7 @@ namespace SIBAU_liblink
         {
             if (textBox7.PlaceholderText == "")
             {
-                textBox7.PlaceholderText = "Last Name";
+                textBox7.PlaceholderText = "Full Name";
                 textBox7.ForeColor = Color.Black;
 
             }
@@ -82,11 +86,11 @@ namespace SIBAU_liblink
 
         private void textBox4_MouseHover(object sender, EventArgs e)
         {
-            if (textBox4.PlaceholderText == "CMS-ID")
+            if (textBox4.PlaceholderText == "Email")
             {
                 textBox4.PlaceholderText = "";
                 textBox4.ForeColor = Color.Black;
-                tooltip.SetToolTip(textBox4, "Enter Your CMS-ID");
+                tooltip.SetToolTip(textBox4, "Enter Your Email");
 
             }
 
@@ -97,7 +101,7 @@ namespace SIBAU_liblink
         {
             if (textBox4.PlaceholderText == "")
             {
-                textBox4.PlaceholderText = "CMS-ID";
+                textBox4.PlaceholderText = "Email";
                 textBox4.ForeColor = Color.Black;
 
             }
@@ -106,11 +110,11 @@ namespace SIBAU_liblink
 
         private void textBox3_MouseHover(object sender, EventArgs e)
         {
-            if (textBox3.PlaceholderText == "Email")
+            if (textBox3.PlaceholderText == "Department")
             {
                 textBox3.PlaceholderText = "";
                 textBox3.ForeColor = Color.Black;
-                tooltip.SetToolTip(textBox3, "Enter Your Email");
+                tooltip.SetToolTip(textBox3, "Enter Your Department");
 
             }
         }
@@ -119,7 +123,7 @@ namespace SIBAU_liblink
         {
             if (textBox3.PlaceholderText == "")
             {
-                textBox3.PlaceholderText = "Email";
+                textBox3.PlaceholderText = "Department";
                 textBox3.ForeColor = Color.Black;
 
             }
@@ -173,7 +177,7 @@ namespace SIBAU_liblink
             Login_Form login = new Login_Form();
             login.Show();
             Registration_Form register = new Registration_Form();
-            register.Hide();
+            register.Close();
         }
         public static string HashPassword(string password)
         {
@@ -208,8 +212,8 @@ namespace SIBAU_liblink
                 Gender = radioButton2.Text;
             }
             String dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
-            string query = @"INSERT INTO UsersInfo(ID, FullName, Email, Department, Password,ComfrimPassword, UserType, Gender, ProfilePicture) 
-                           VALUES(@ID, @fName, @Email, @Department, @Password,@ComfrimPassword, @UserType, @Gender, @ProfilePicture)";
+            string query = @"INSERT INTO UserInfo(UserID, FullName, Email, Department, Password,ConfirmPassword, UserType, Gender,Picture) 
+                           VALUES(@ID, @fName, @Email, @Department, @Password,@ConfirmPassword, @UserType, @Gender, @Picture)";
             SqlConnection con = new SqlConnection(dcon);
             SqlCommand cmd = new SqlCommand(query,con);
             con.Open();
@@ -218,13 +222,13 @@ namespace SIBAU_liblink
             cmd.Parameters.AddWithValue("@Email",textBox4.Text.Trim());
             cmd.Parameters.AddWithValue("@Department",textBox3.Text.Trim());
             cmd.Parameters.AddWithValue("@Password", hashedPassword.Trim());
-            cmd.Parameters.AddWithValue("@ComfrimPassword",hashedcomfrim_Password.Trim());
+            cmd.Parameters.AddWithValue("@ConfirmPassword",hashedcomfrim_Password.Trim());
             cmd.Parameters.AddWithValue("@UserType", comboBox1.SelectedItem.ToString());
             cmd.Parameters.AddWithValue("@Gender",Gender);
             if (profileImage != null)
-                cmd.Parameters.Add("@ProfilePicture", System.Data.SqlDbType.VarBinary).Value = profileImage;
+                cmd.Parameters.Add("@Picture", System.Data.SqlDbType.VarBinary).Value = profileImage;
             else
-                cmd.Parameters.Add("@ProfilePicture", System.Data.SqlDbType.VarBinary).Value = DBNull.Value;
+                cmd.Parameters.Add("@Picture", System.Data.SqlDbType.VarBinary).Value = DBNull.Value;
 
             cmd.ExecuteNonQuery();
             con.Close();
@@ -232,6 +236,8 @@ namespace SIBAU_liblink
             Clearfields();
             Login_Form login = new Login_Form();
             login.Show();
+            Registration_Form register = new Registration_Form();
+            register.Close();
 
         }
         private void Clearfields()

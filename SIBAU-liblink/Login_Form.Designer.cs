@@ -52,6 +52,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.None;
             panel1.BackColor = Color.White;
             panel1.Controls.Add(pictureBox2);
             panel1.Controls.Add(label5);
@@ -66,7 +67,7 @@
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
-            panel1.Location = new Point(403, 98);
+            panel1.Location = new Point(403, 117);
             panel1.Name = "panel1";
             panel1.Size = new Size(264, 364);
             panel1.TabIndex = 0;
@@ -127,8 +128,7 @@
             // 
             // btn_lg1
             // 
-            btn_lg1.BackColor = Color.White;
-            btn_lg1.BackgroundImage = (Image)resources.GetObject("btn_lg1.BackgroundImage");
+            btn_lg1.BackColor = SystemColors.HotTrack;
             btn_lg1.BackgroundImageLayout = ImageLayout.Center;
             btn_lg1.Cursor = Cursors.Hand;
             btn_lg1.FlatAppearance.BorderSize = 0;
@@ -239,6 +239,7 @@
             Name = "Login_Form";
             StartPosition = FormStartPosition.CenterScreen;
             Text = " Login";
+            WindowState = FormWindowState.Maximized;
             Load += Login_Form_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -65,7 +65,7 @@
             panel_top.Dock = DockStyle.Top;
             panel_top.Location = new Point(0, 0);
             panel_top.Name = "panel_top";
-            panel_top.Size = new Size(884, 100);
+            panel_top.Size = new Size(884, 78);
             panel_top.TabIndex = 109;
             // 
             // pictureBox2
@@ -106,11 +106,11 @@
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(337, 5);
+            label6.Location = new Point(345, 5);
             label6.Name = "label6";
-            label6.Size = new Size(265, 37);
+            label6.Size = new Size(197, 28);
             label6.TabIndex = 93;
             label6.Text = "Returned Books";
             // 
@@ -131,7 +131,7 @@
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
             pictureBox8.Location = new Point(4, 4);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(140, 92);
+            pictureBox8.Size = new Size(100, 70);
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox8.TabIndex = 92;
             pictureBox8.TabStop = false;
@@ -261,9 +261,9 @@
             DGV_rbk.BackgroundColor = Color.White;
             DGV_rbk.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_rbk.Dock = DockStyle.Fill;
-            DGV_rbk.Location = new Point(0, 100);
+            DGV_rbk.Location = new Point(0, 78);
             DGV_rbk.Name = "DGV_rbk";
-            DGV_rbk.Size = new Size(884, 366);
+            DGV_rbk.Size = new Size(884, 388);
             DGV_rbk.TabIndex = 111;
             // 
             // Return_bks_stu_Control

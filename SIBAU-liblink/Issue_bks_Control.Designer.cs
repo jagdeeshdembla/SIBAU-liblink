@@ -52,6 +52,8 @@
             panel1 = new Panel();
             comboBox1 = new ComboBox();
             label10 = new Label();
+            label11 = new Label();
+            label12 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             panel1.SuspendLayout();
             SuspendLayout();
@@ -61,11 +63,11 @@
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(365, 5);
+            label3.Location = new Point(407, 5);
             label3.Name = "label3";
-            label3.Size = new Size(203, 37);
+            label3.Size = new Size(152, 28);
             label3.TabIndex = 95;
             label3.Text = "Issue Books";
             label3.Click += label3_Click;
@@ -76,7 +78,7 @@
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
             pictureBox8.Location = new Point(4, 4);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(140, 92);
+            pictureBox8.Size = new Size(100, 70);
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox8.TabIndex = 94;
             pictureBox8.TabStop = false;
@@ -87,23 +89,23 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(213, 120);
+            label1.Location = new Point(111, 123);
             label1.Name = "label1";
-            label1.Size = new Size(92, 18);
+            label1.Size = new Size(67, 18);
             label1.TabIndex = 101;
-            label1.Text = "Student ID";
+            label1.Text = "User ID";
             label1.Click += label1_Click;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(213, 141);
+            textBox2.Location = new Point(111, 144);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(199, 23);
             textBox2.TabIndex = 100;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(214, 210);
+            textBox1.Location = new Point(111, 210);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(198, 23);
             textBox1.TabIndex = 102;
@@ -114,7 +116,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Black;
-            label2.Location = new Point(214, 189);
+            label2.Location = new Point(109, 190);
             label2.Name = "label2";
             label2.Size = new Size(103, 18);
             label2.TabIndex = 103;
@@ -122,7 +124,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(499, 141);
+            textBox3.Location = new Point(388, 144);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(199, 23);
             textBox3.TabIndex = 104;
@@ -133,15 +135,15 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(499, 120);
+            label4.Location = new Point(388, 123);
             label4.Name = "label4";
-            label4.Size = new Size(121, 18);
+            label4.Size = new Size(86, 18);
             label4.TabIndex = 105;
-            label4.Text = "Student Name";
+            label4.Text = "Full Name";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(502, 209);
+            textBox4.Location = new Point(388, 210);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(199, 23);
             textBox4.TabIndex = 106;
@@ -152,7 +154,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(502, 188);
+            label5.Location = new Point(388, 189);
             label5.Name = "label5";
             label5.Size = new Size(85, 18);
             label5.TabIndex = 107;
@@ -164,7 +166,7 @@
             label6.BackColor = Color.Transparent;
             label6.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(214, 392);
+            label6.Location = new Point(107, 367);
             label6.Name = "label6";
             label6.Size = new Size(93, 18);
             label6.TabIndex = 108;
@@ -172,14 +174,14 @@
             // 
             // DTP1
             // 
-            DTP1.Location = new Point(214, 413);
+            DTP1.Location = new Point(111, 388);
             DTP1.Name = "DTP1";
             DTP1.Size = new Size(200, 23);
             DTP1.TabIndex = 109;
             // 
             // DTP2
             // 
-            DTP2.Location = new Point(500, 414);
+            DTP2.Location = new Point(387, 388);
             DTP2.Name = "DTP2";
             DTP2.Size = new Size(200, 23);
             DTP2.TabIndex = 111;
@@ -190,7 +192,7 @@
             label7.BackColor = Color.Transparent;
             label7.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(500, 393);
+            label7.Location = new Point(386, 367);
             label7.Name = "label7";
             label7.Size = new Size(82, 18);
             label7.TabIndex = 110;
@@ -207,7 +209,7 @@
             btn_isb.ForeColor = Color.White;
             btn_isb.Location = new Point(248, 462);
             btn_isb.Name = "btn_isb";
-            btn_isb.Size = new Size(168, 38);
+            btn_isb.Size = new Size(140, 38);
             btn_isb.TabIndex = 112;
             btn_isb.Text = "Issue Book";
             btn_isb.UseVisualStyleBackColor = false;
@@ -224,7 +226,7 @@
             btn_clr.ForeColor = Color.White;
             btn_clr.Location = new Point(498, 462);
             btn_clr.Name = "btn_clr";
-            btn_clr.Size = new Size(168, 38);
+            btn_clr.Size = new Size(140, 38);
             btn_clr.TabIndex = 113;
             btn_clr.Text = "Clear";
             btn_clr.UseVisualStyleBackColor = false;
@@ -232,7 +234,7 @@
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(502, 279);
+            textBox5.Location = new Point(388, 313);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(199, 23);
             textBox5.TabIndex = 116;
@@ -243,7 +245,7 @@
             label8.BackColor = Color.Transparent;
             label8.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(502, 258);
+            label8.Location = new Point(388, 292);
             label8.Name = "label8";
             label8.Size = new Size(99, 18);
             label8.TabIndex = 117;
@@ -251,7 +253,7 @@
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(214, 280);
+            textBox6.Location = new Point(112, 313);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(198, 23);
             textBox6.TabIndex = 114;
@@ -262,7 +264,7 @@
             label9.BackColor = Color.Transparent;
             label9.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(214, 259);
+            label9.Location = new Point(113, 293);
             label9.Name = "label9";
             label9.Size = new Size(70, 18);
             label9.TabIndex = 115;
@@ -275,7 +277,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(884, 100);
+            panel1.Size = new Size(884, 78);
             panel1.TabIndex = 132;
             // 
             // comboBox1
@@ -283,7 +285,7 @@
             comboBox1.Cursor = Cursors.Hand;
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "BSCS", "BBA", "LITERATURE", "MATHEMATICS", "HISTROY", "REFERENCES", "JOURNALS & MAGAZINES" });
-            comboBox1.Location = new Point(214, 348);
+            comboBox1.Location = new Point(658, 312);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(198, 23);
             comboBox1.TabIndex = 134;
@@ -294,11 +296,37 @@
             label10.BackColor = Color.Transparent;
             label10.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(217, 325);
+            label10.Location = new Point(655, 291);
             label10.Name = "label10";
             label10.Size = new Size(82, 18);
             label10.TabIndex = 133;
             label10.Text = "Category";
+            // 
+            // label11
+            // 
+            label11.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label11.AutoSize = true;
+            label11.BackColor = Color.Transparent;
+            label11.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.Blue;
+            label11.Location = new Point(4, 91);
+            label11.Name = "label11";
+            label11.Size = new Size(101, 18);
+            label11.TabIndex = 96;
+            label11.Text = "User Detail:";
+            // 
+            // label12
+            // 
+            label12.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label12.AutoSize = true;
+            label12.BackColor = Color.Transparent;
+            label12.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label12.ForeColor = Color.Blue;
+            label12.Location = new Point(4, 260);
+            label12.Name = "label12";
+            label12.Size = new Size(104, 18);
+            label12.TabIndex = 135;
+            label12.Text = "Book Detail:";
             // 
             // Issue_bks_Control
             // 
@@ -306,6 +334,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BorderStyle = BorderStyle.Fixed3D;
+            Controls.Add(label12);
+            Controls.Add(label11);
             Controls.Add(comboBox1);
             Controls.Add(label10);
             Controls.Add(panel1);
@@ -361,5 +391,7 @@
         private Panel panel1;
         private ComboBox comboBox1;
         private Label label10;
+        private Label label11;
+        private Label label12;
     }
 }

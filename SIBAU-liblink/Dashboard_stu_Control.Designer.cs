@@ -266,7 +266,7 @@
             Stu_chart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             Stu_chart.Legends.Add(legend1);
-            Stu_chart.Location = new Point(4, 168);
+            Stu_chart.Location = new Point(4, 189);
             Stu_chart.Name = "Stu_chart";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";

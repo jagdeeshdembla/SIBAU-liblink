@@ -113,7 +113,7 @@ namespace SIBAU_liblink
             Form1 f1 = new Form1();
             f1.Show();
             Form3 f3 = new Form3();
-            f3.Hide();
+            f3.Close();
         }
 
         private void btn_db_MouseEnter(object sender, EventArgs e)

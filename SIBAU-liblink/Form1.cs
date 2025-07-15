@@ -113,9 +113,8 @@ namespace SIBAU_liblink
             label2.Name = "label2";
             label2.Size = new Size(612, 39);
             label2.TabIndex = 0;
-            label2.Text = "\"Led By : Vandna Jeswani and Jagdeesh Dembla\" ";
+            label2.Text = "\"Developed By : Vandna Jeswani and Jagdeesh Dembla\" ";
             label2.TextAlign = ContentAlignment.MiddleCenter;
-           
             // 
             // Form1
             // 
@@ -133,11 +132,11 @@ namespace SIBAU_liblink
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Digital Library Management System ";
+            WindowState = FormWindowState.Maximized;
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             ResumeLayout(false);
-            
         }
 
         private void btn_lg_Click(object sender, EventArgs e)

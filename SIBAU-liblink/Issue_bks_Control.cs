@@ -41,36 +41,58 @@ namespace SIBAU_liblink
             textBox4.Clear();
             textBox6.Clear();
             textBox5.Clear();
+            comboBox1.SelectedIndex = -1;
             DTP1.Value = DateTime.Today;
             DTP2.Value = DateTime.Today;
         }
 
         private void btn_isb_Click(object sender, EventArgs e)
         {
-            string insertQuery = @"INSERT INTO IssuedBooks(StudentID, StudentName, Department, Semester, BookID, BookName, IssueDate, DueDate)
+            string checkUser = "SELECT Status FROM UserInfo WHERE UserID = @UserID";
+            string insertQuery = @"INSERT INTO IssueBooks(UserID,FullName, Department, Semester, BookID, BookName, IssueDate, DueDate)
                                VALUES 
-                               (@StudentID, @StudentName, @Department, @Semester, @BookID, @BookName, @IssueDate, @DueDate);
-                               SELECT SCOPE_IDENTITY();";
+                               (@UserID, @FullName, @Department, @Semester, @BookID, @BookName, @IssueDate, @DueDate)";
             string checkBookQuery = "SELECT COUNT(*) FROM Books WHERE BookID = @BookID AND BookName = @BookName AND Quantity > 0";
             string updateBookQty = "UPDATE Books SET Quantity = Quantity - 1 WHERE BookID = @BookID AND BookName = @BookName";
             String dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
             SqlConnection con = new SqlConnection(dcon);
+            SqlCommand check = new SqlCommand(checkUser, con);
+            check.Parameters.AddWithValue("@UserID",textBox2.Text);
+            con.Open();
+            object statusObj = check.ExecuteScalar();
+            if (statusObj == null)
+            {
+                MessageBox.Show("User Account is not registered.");
+                ClearFields();
+                return;
+               
+
+            }
+
+            string status = statusObj.ToString();
+            if (status != "Active")
+            {
+                MessageBox.Show("User account is inactive. Cannot issue book.");
+                ClearFields();
+                return;
+            }
             SqlCommand checkCmd = new SqlCommand(checkBookQuery, con);
             checkCmd.Parameters.AddWithValue("@BookID", textBox6.Text);
-            checkCmd.Parameters.AddWithValue("@BookName",textBox5.Text);
+            checkCmd.Parameters.AddWithValue("@BookName", textBox5.Text);
 
-            con.Open();
+            
             int bookCount = (int)checkCmd.ExecuteScalar();
 
             if (bookCount == 0)
             {
                 MessageBox.Show("This book is not available in the library or out of stock.");
+                ClearFields();
                 con.Close();
                 return;
             }
             SqlCommand insertCmd = new SqlCommand(insertQuery, con);
             insertCmd.Parameters.AddWithValue("@StudentID", textBox2.Text);
-            insertCmd.Parameters.AddWithValue("@StudentName",textBox3.Text);
+            insertCmd.Parameters.AddWithValue("@StudentName", textBox3.Text);
             insertCmd.Parameters.AddWithValue("@Department", textBox1.Text);
             insertCmd.Parameters.AddWithValue("@Semester", textBox4.Text);
             insertCmd.Parameters.AddWithValue("@BookID", textBox6.Text);
@@ -78,16 +100,16 @@ namespace SIBAU_liblink
             insertCmd.Parameters.AddWithValue("@IssueDate", DTP1.Value.Date);
             insertCmd.Parameters.AddWithValue("@DueDate", DTP2.Value.Date);
 
-            int IssueID = Convert.ToInt32(insertCmd.ExecuteScalar());
+            
 
             SqlCommand updateCmd = new SqlCommand(updateBookQty, con);
             updateCmd.Parameters.AddWithValue("@BookID", textBox6.Text);
-            updateCmd.Parameters.AddWithValue("@BookName",textBox5.Text);
+            updateCmd.Parameters.AddWithValue("@BookName", textBox5.Text);
             updateCmd.ExecuteNonQuery();
 
             con.Close();
 
-            MessageBox.Show("Book issued successfully! Issue ID: " + IssueID);
+            MessageBox.Show("Book issued successfully!");
             ClearFields();
 
 

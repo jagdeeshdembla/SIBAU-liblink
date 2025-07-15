@@ -13,16 +13,23 @@ namespace SIBAU_liblink
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-           // InitializeChart();
-              DisplayUsers();
-              DisplayBooks();
+            
+            DisplayMembers();
+            DisplayStudents();
+            DisplayFaculty();
+            DisplayStaff();
+
+            DisplayBooks();
+            DisplayTIBooks();
+
             //  DisplayTBBooks();
             //  DisplayTRBooks();
-            //  UpdateChartWithRealData();
-              DisplayStudents();
-              DisplayTeachers();
-        }
 
+
+
+              LoadLibraryReport();
+        }
+        
         public static class sessionStoreData
         {
             public static int Members;
@@ -30,58 +37,50 @@ namespace SIBAU_liblink
             public static int Borrowed;
             public static int Returned;
         }
-
-        private void InitializeChart()
+        public void LoadLibraryReport()
         {
-            // Clear any existing series and chart areas
             chart1.Series.Clear();
             chart1.ChartAreas.Clear();
+            chart1.Legends.Clear();
+            chart1.Titles.Clear();
 
-            // Create a new chart area
-            ChartArea chartArea = new ChartArea();
+            // Step 1: Setup chart area
+            ChartArea chartArea = new ChartArea("MainArea");
+            chartArea.AxisX.Interval = 1; // Ensure all labels show
             chartArea.AxisX.MajorGrid.Enabled = false;
-            chartArea.AxisY.MajorGrid.Enabled = false;
-            chartArea.AxisY.Interval = 20; // Set Y-axis interval to 20 as shown in your image
-            chartArea.AxisY.Maximum = 100; // Set maximum Y value to 100
+            chartArea.AxisX.Title = "Categories";
+            chartArea.AxisY.Title = "Total Count";
+            chartArea.AxisX.LabelStyle.Angle = 0;
+            chartArea.AxisX.IsLabelAutoFit = true;
             chart1.ChartAreas.Add(chartArea);
 
-            // Create a new series for the bar chart
-            Series series = new Series("Library Data");
+            // Step 2: Create ONE series for all categories
+            Series series = new Series("Library Report");
             series.ChartType = SeriesChartType.Column;
-            series.IsValueShownAsLabel = true; // Show values on top of bars
+            series.XValueType = ChartValueType.String;
+
+            // Step 3: Add each value with its own X-axis label (category)
+            series.Points.AddXY("Members", sessionStoreData.Members);
+            series.Points.AddXY("Books", sessionStoreData.Books);
+            series.Points.AddXY("Issued", sessionStoreData.Borrowed);
+            series.Points.AddXY("Returned", sessionStoreData.Returned);
+
+            // Step 4: Show values on columns
+            series.IsValueShownAsLabel = true;
+            series.LabelForeColor = Color.Black;
+            series.Color = Color.DodgerBlue;
+
             chart1.Series.Add(series);
 
-            // Set chart appearance
-            chart1.BackColor = Color.White;
-            chartArea.BackColor = Color.White;
+            // Optional: Add title
+            chart1.Titles.Add("Library Report Overview");
         }
 
-        public void UpdateChartWithRealData()
+
+
+        public void DisplayMembers()
         {
-            // Clear previous data
-            chart1.Series["Library Data"].Points.Clear();
-
-            // Add data points for each category
-            chart1.Series["Library Data"].Points.AddXY("Total Members", sessionStoreData.Members);
-            chart1.Series["Library Data"].Points.AddXY("Total Books", sessionStoreData.Books);
-            chart1.Series["Library Data"].Points.AddXY("Borrowed Books", sessionStoreData.Borrowed);
-            chart1.Series["Library Data"].Points.AddXY("Returned Books", sessionStoreData.Returned);
-
-            // Set different colors for each bar
-            chart1.Series["Library Data"].Points[0].Color = Color.FromArgb(41, 128, 185);   // Blue
-            chart1.Series["Library Data"].Points[1].Color = Color.FromArgb(39, 174, 96);   // Green
-            chart1.Series["Library Data"].Points[2].Color = Color.FromArgb(243, 156, 18);  // Orange
-            chart1.Series["Library Data"].Points[3].Color = Color.FromArgb(231, 76, 60);    // Red
-
-            // Adjust Y-axis maximum dynamically based on highest value
-            int maxValue = Math.Max(Math.Max(sessionStoreData.Members, sessionStoreData.Books),
-                                  Math.Max(sessionStoreData.Borrowed, sessionStoreData.Returned));
-            chart1.ChartAreas[0].AxisY.Maximum = maxValue + (20 - maxValue % 20); // Round up to nearest 20
-        }
-
-        public void DisplayUsers()
-        {
-            string query = "SELECT * FROM UsersInfo WHERE UserType = 'Faculty' OR UserType = 'Student'";
+            string query = "SELECT * FROM UserInfo WHERE UserType = 'Faculty' OR UserType = 'Student' OR UserType = 'Staff'";
             string dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
             using (SqlConnection con = new SqlConnection(dcon))
             {
@@ -93,6 +92,53 @@ namespace SIBAU_liblink
                 label_tms.Text = dt.Rows.Count.ToString();
                 sessionStoreData.Members = dt.Rows.Count;
             }
+        }
+        public void DisplayStudents()
+        {
+            string query = "SELECT * FROM UserInfo WHERE UserType = 'Student'";
+            string dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
+            using (SqlConnection con = new SqlConnection(dcon))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                label_tsts.Text = dt.Rows.Count.ToString();
+
+            }
+        }
+        public void DisplayFaculty()
+        {
+            string query = "SELECT * FROM UserInfo WHERE UserType = 'Faculty'";
+            string dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
+            using (SqlConnection con = new SqlConnection(dcon))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                label_tfts.Text = dt.Rows.Count.ToString();
+
+            }
+        }
+
+        public void DisplayStaff() 
+        {
+            string query = "SELECT * FROM UserInfo WHERE UserType = 'Staff'";
+            string dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
+            using (SqlConnection con = new SqlConnection(dcon))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand(query, con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                label_tsfs.Text = dt.Rows.Count.ToString();
+
+            }
+
         }
 
         public void DisplayBooks()
@@ -106,14 +152,14 @@ namespace SIBAU_liblink
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                label_tbk.Text = dt.Rows.Count.ToString();
+                label_tbks.Text = dt.Rows.Count.ToString();
                 sessionStoreData.Books = dt.Rows.Count;
             }
         }
 
-        public void DisplayTBBooks()
+        public void DisplayTIBooks()
         {
-            string query = "SELECT * FROM IssuedBooks";
+            string query = "SELECT * FROM IssueBooks";
             string dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
             using (SqlConnection con = new SqlConnection(dcon))
             {
@@ -122,7 +168,7 @@ namespace SIBAU_liblink
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
-                label_tbbk.Text = dt.Rows.Count.ToString();
+                label_tibk.Text = dt.Rows.Count.ToString();
                 sessionStoreData.Borrowed = dt.Rows.Count;
             }
         }
@@ -143,37 +189,8 @@ namespace SIBAU_liblink
             }
         }
 
-        public void DisplayStudents()
-        {
-            string query = "SELECT * FROM UsersInfo WHERE UserType = 'Student'";
-            string dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
-            using (SqlConnection con = new SqlConnection(dcon))
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand(query, con);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                label_tsts.Text = dt.Rows.Count.ToString();
-                
-            }
-        }
-
-        public void DisplayTeachers()
-        {
-            string query = "SELECT * FROM UsersInfo WHERE UserType = 'Faculty'";
-            string dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
-            using (SqlConnection con = new SqlConnection(dcon))
-            {
-                con.Open();
-                SqlCommand cmd = new SqlCommand(query, con);
-                SqlDataAdapter da = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                label_ttcs.Text = dt.Rows.Count.ToString();
-
-            }
-        }
+        
+        
 
 
     }

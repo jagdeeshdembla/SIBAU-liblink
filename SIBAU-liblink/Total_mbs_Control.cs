@@ -30,7 +30,7 @@ namespace SIBAU_liblink
         private void UserInfo()
         {
     
-           string query = "SELECT ID,FullName Email,Department, UserType, Gender FROM UsersInfo WHERE UserType = 'Student' OR UserType = 'Faculty'";
+           string query = "SELECT UserID,FullName Email,Department, UserType, Gender FROM UserInfo WHERE UserType = 'Student' OR UserType = 'Faculty'";
            string dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
             SqlConnection con = new SqlConnection(dcon);
             con.Open();

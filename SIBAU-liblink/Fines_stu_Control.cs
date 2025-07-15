@@ -18,7 +18,7 @@ namespace SIBAU_liblink
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            DisplayFines();
+            //DisplayFines();
         }
 
         public void DisplayFines()

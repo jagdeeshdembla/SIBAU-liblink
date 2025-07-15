@@ -17,7 +17,10 @@ namespace SIBAU_liblink
         public Login_Form()
         {
             InitializeComponent();
-            
+
+            panel1.Left = (this.ClientSize.Width - panel1.Width) / 2;
+            panel1.Top = (this.ClientSize.Height - panel1.Height) / 2;
+
         }
         public static string HashPassword(string password)
         {
@@ -51,7 +54,7 @@ namespace SIBAU_liblink
 
             String dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
             SqlConnection con = new SqlConnection(dcon);
-            SqlCommand cmd = new SqlCommand("select * from UsersInfo where ID = '" + textBox1.Text + "'and Password = '" +hashedPassword + "'", con);
+            SqlCommand cmd = new SqlCommand("select * from UserInfo where UserID = '" + textBox1.Text + "'and Password = '" +hashedPassword + "'", con);
             SqlDataAdapter apdt = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             apdt.Fill(dt);
@@ -60,12 +63,17 @@ namespace SIBAU_liblink
             {
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
+                    if (dt.Rows[i]["Status"].ToString() == "UnActive")
+                    {
+                        MessageBox.Show("Your account is blocked. Please contact the admin.");
+                        return; // Stop login process
+                    }
                     sessionData.UserID = textBox1.Text;
                     sessionData.UserfName = dt.Rows[i][1].ToString();
 
-                    if (dt.Rows[i]["ProfilePicture"] != DBNull.Value)
+                    if (dt.Rows[i]["Picture"] != DBNull.Value)
                     {
-                        byte[] imageBytes = (byte[])dt.Rows[i]["ProfilePicture"];
+                        byte[] imageBytes = (byte[])dt.Rows[i]["Picture"];
                         using (MemoryStream ms = new MemoryStream(imageBytes))
                         {
                             sessionData.profile = Image.FromStream(ms);
@@ -77,26 +85,32 @@ namespace SIBAU_liblink
                     }
 
 
-                    if (dt.Rows[i]["ID"].ToString() == textBox1.Text)
+                    if (dt.Rows[i]["UserID"].ToString() == textBox1.Text)
                     {
                         MessageBox.Show("You Are Login as " + dt.Rows[i][6]);
                         if (dt.Rows[i][6].ToString() == "Admin")
                         {
                             Form2 f2 = new Form2();
                             f2.Show();
-                            this.Hide();
+                            this.Close();
                         }
                         else if (dt.Rows[i][6].ToString() == "Student")
                         {
                             Form3 f3 = new Form3();
                             f3.Show();
-                            this.Hide();
+                            this.Close();
                         }
                         else if(dt.Rows[i][6].ToString() == "Faculty")
                         {
                             Form4 f4 = new Form4();
                             f4.Show();
-                            this.Hide();
+                            this.Close();
+                        }
+                        else if (dt.Rows[i][6].ToString() == "Staff")
+                        {
+                            Form4 f4 = new Form4();
+                            f4.Show();
+                            this.Close();
                         }
                     }
                 }
@@ -152,7 +166,7 @@ namespace SIBAU_liblink
             Registration_Form register = new Registration_Form();
             register.Show();
             Login_Form login = new Login_Form();
-            login.Hide();
+            login.Close();
         }
 
         private void textBox1_MouseHover(object sender, EventArgs e)

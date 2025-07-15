@@ -20,8 +20,8 @@ namespace SIBAU_liblink
             InitializeComponent();
             this.Dock = DockStyle.Fill;
            // StudentBarChart();
-            DisplayTBBooks();
-            DisplayTRBooks();
+          //  DisplayTBBooks();
+          //  DisplayTRBooks();
           //  DisplayFines();
         }
         private void StudentBarChart()

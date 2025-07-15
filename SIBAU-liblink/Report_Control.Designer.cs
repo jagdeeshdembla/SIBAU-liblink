@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Report_Control));
             panel_top = new Panel();
-            dateTimePicker2 = new DateTimePicker();
+            DTP2 = new DateTimePicker();
             label4 = new Label();
             pictureBox5 = new PictureBox();
             label3 = new Label();
-            dateTimePicker1 = new DateTimePicker();
+            DTP1 = new DateTimePicker();
             pictureBox2 = new PictureBox();
             label5 = new Label();
             textBox2 = new TextBox();
@@ -57,11 +57,11 @@
             // 
             // panel_top
             // 
-            panel_top.Controls.Add(dateTimePicker2);
+            panel_top.Controls.Add(DTP2);
             panel_top.Controls.Add(label4);
             panel_top.Controls.Add(pictureBox5);
             panel_top.Controls.Add(label3);
-            panel_top.Controls.Add(dateTimePicker1);
+            panel_top.Controls.Add(DTP1);
             panel_top.Controls.Add(pictureBox2);
             panel_top.Controls.Add(label5);
             panel_top.Controls.Add(textBox2);
@@ -72,16 +72,16 @@
             panel_top.Dock = DockStyle.Top;
             panel_top.Location = new Point(0, 0);
             panel_top.Name = "panel_top";
-            panel_top.Size = new Size(884, 100);
+            panel_top.Size = new Size(884, 82);
             panel_top.TabIndex = 108;
             // 
-            // dateTimePicker2
+            // DTP2
             // 
-            dateTimePicker2.Location = new Point(679, 71);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(200, 23);
-            dateTimePicker2.TabIndex = 101;
-            dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
+            DTP2.Location = new Point(679, 53);
+            DTP2.Name = "DTP2";
+            DTP2.Size = new Size(200, 23);
+            DTP2.TabIndex = 101;
+            DTP2.ValueChanged += dateTimePicker2_ValueChanged;
             // 
             // label4
             // 
@@ -90,7 +90,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(648, 75);
+            label4.Location = new Point(648, 59);
             label4.Name = "label4";
             label4.Size = new Size(27, 15);
             label4.TabIndex = 100;
@@ -103,7 +103,7 @@
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
             pictureBox5.Location = new Point(4, 4);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(120, 92);
+            pictureBox5.Size = new Size(100, 70);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox5.TabIndex = 108;
             pictureBox5.TabStop = false;
@@ -115,19 +115,19 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(394, 74);
+            label3.Location = new Point(394, 58);
             label3.Name = "label3";
             label3.Size = new Size(45, 15);
             label3.TabIndex = 98;
             label3.Text = "From:";
             // 
-            // dateTimePicker1
+            // DTP1
             // 
-            dateTimePicker1.Location = new Point(443, 70);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
-            dateTimePicker1.TabIndex = 99;
-            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            DTP1.Location = new Point(443, 53);
+            DTP1.Name = "DTP1";
+            DTP1.Size = new Size(200, 23);
+            DTP1.TabIndex = 99;
+            DTP1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
             // pictureBox2
             // 
@@ -147,7 +147,7 @@
             label5.BackColor = Color.Transparent;
             label5.Font = new Font("Arial Rounded MT Bold", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(132, 74);
+            label5.Location = new Point(132, 58);
             label5.Name = "label5";
             label5.Size = new Size(53, 15);
             label5.TabIndex = 102;
@@ -180,7 +180,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "All", "Issued Books", "Returned Books", "Overdue Books", "Student Wise", "Monthly Report" });
-            comboBox1.Location = new Point(189, 70);
+            comboBox1.Location = new Point(189, 53);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(201, 23);
             comboBox1.TabIndex = 103;
@@ -190,11 +190,11 @@
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(362, 6);
+            label6.Location = new Point(407, 5);
             label6.Name = "label6";
-            label6.Size = new Size(198, 37);
+            label6.Size = new Size(147, 28);
             label6.TabIndex = 93;
             label6.Text = "LMS Report";
             label6.Click += label6_Click;
@@ -274,9 +274,9 @@
             DGV_rpt.BackgroundColor = Color.White;
             DGV_rpt.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_rpt.Dock = DockStyle.Fill;
-            DGV_rpt.Location = new Point(0, 100);
+            DGV_rpt.Location = new Point(0, 82);
             DGV_rpt.Name = "DGV_rpt";
-            DGV_rpt.Size = new Size(884, 373);
+            DGV_rpt.Size = new Size(884, 391);
             DGV_rpt.TabIndex = 110;
             // 
             // Report_Control
@@ -307,13 +307,13 @@
         private TextBox textBox2;
         private PictureBox pictureBox1;
         private Label label3;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker DTP1;
         private Label label6;
         private Label label4;
         private Label label5;
         private ComboBox comboBox1;
         private TextBox textBox1;
-        private DateTimePicker dateTimePicker2;
+        private DateTimePicker DTP2;
         private PictureBox pictureBox5;
         private Panel panel1;
         private DataGridView DGV_rpt;

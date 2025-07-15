@@ -37,7 +37,7 @@ namespace SIBAU_liblink
             textBox8.Enabled = false;
             textBox9.PlaceholderText = sessionData.UserfName;
             textBox9.Enabled = false;
-           
+
         }
 
         private void pictureBox4_Paint(object sender, PaintEventArgs e)
@@ -45,6 +45,11 @@ namespace SIBAU_liblink
             GraphicsPath path = new GraphicsPath();
             path.AddEllipse(0, 0, pictureBox4.Width, pictureBox4.Height);
             pictureBox4.Region = new Region(path);
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -56,7 +56,7 @@
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
             pictureBox8.Location = new Point(4, 4);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(140, 92);
+            pictureBox8.Size = new Size(100, 70);
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox8.TabIndex = 92;
             pictureBox8.TabStop = false;
@@ -77,11 +77,11 @@
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(338, 5);
+            label6.Location = new Point(366, 5);
             label6.Name = "label6";
-            label6.Size = new Size(275, 37);
+            label6.Size = new Size(206, 28);
             label6.TabIndex = 93;
             label6.Text = "Borrowed Books";
             // 
@@ -129,7 +129,7 @@
             panel_top.Dock = DockStyle.Top;
             panel_top.Location = new Point(0, 0);
             panel_top.Name = "panel_top";
-            panel_top.Size = new Size(884, 100);
+            panel_top.Size = new Size(884, 78);
             panel_top.TabIndex = 108;
             // 
             // panel1
@@ -201,9 +201,9 @@
             DGV_bbk.BackgroundColor = Color.White;
             DGV_bbk.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_bbk.Dock = DockStyle.Fill;
-            DGV_bbk.Location = new Point(0, 100);
+            DGV_bbk.Location = new Point(0, 78);
             DGV_bbk.Name = "DGV_bbk";
-            DGV_bbk.Size = new Size(884, 366);
+            DGV_bbk.Size = new Size(884, 388);
             DGV_bbk.TabIndex = 110;
             // 
             // Borrowed_bks_stu_Control

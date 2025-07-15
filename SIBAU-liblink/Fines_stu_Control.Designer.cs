@@ -40,6 +40,8 @@
             label3 = new Label();
             label1 = new Label();
             DGV_Fines = new DataGridView();
+            label2 = new Label();
+            label4 = new Label();
             panel_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -59,7 +61,7 @@
             panel_top.Dock = DockStyle.Top;
             panel_top.Location = new Point(0, 0);
             panel_top.Name = "panel_top";
-            panel_top.Size = new Size(884, 100);
+            panel_top.Size = new Size(884, 78);
             panel_top.TabIndex = 110;
             // 
             // pictureBox2
@@ -100,13 +102,13 @@
             label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label6.AutoSize = true;
             label6.BackColor = Color.Transparent;
-            label6.Font = new Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label6.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(436, 5);
+            label6.Location = new Point(390, 5);
             label6.Name = "label6";
-            label6.Size = new Size(112, 37);
+            label6.Size = new Size(152, 28);
             label6.TabIndex = 93;
-            label6.Text = "FINES";
+            label6.Text = "Fines Books";
             // 
             // textBox1
             // 
@@ -125,13 +127,15 @@
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
             pictureBox8.Location = new Point(4, 4);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(140, 92);
+            pictureBox8.Size = new Size(100, 70);
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox8.TabIndex = 92;
             pictureBox8.TabStop = false;
             // 
             // panel1
             // 
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(label4);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Bottom;
@@ -147,7 +151,7 @@
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(516, 13);
+            label3.Location = new Point(277, 13);
             label3.Name = "label3";
             label3.Size = new Size(22, 24);
             label3.TabIndex = 99;
@@ -160,7 +164,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(372, 13);
+            label1.Location = new Point(133, 13);
             label1.Name = "label1";
             label1.Size = new Size(137, 24);
             label1.TabIndex = 98;
@@ -171,10 +175,36 @@
             DGV_Fines.BackgroundColor = Color.White;
             DGV_Fines.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_Fines.Dock = DockStyle.Fill;
-            DGV_Fines.Location = new Point(0, 100);
+            DGV_Fines.Location = new Point(0, 78);
             DGV_Fines.Name = "DGV_Fines";
-            DGV_Fines.Size = new Size(884, 366);
+            DGV_Fines.Size = new Size(884, 388);
             DGV_Fines.TabIndex = 112;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Font = new Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.Black;
+            label2.Location = new Point(699, 13);
+            label2.Name = "label2";
+            label2.Size = new Size(22, 24);
+            label2.TabIndex = 101;
+            label2.Text = "0";
+            // 
+            // label4
+            // 
+            label4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.Font = new Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(562, 13);
+            label4.Name = "label4";
+            label4.Size = new Size(128, 24);
+            label4.TabIndex = 100;
+            label4.Text = "Total Fines:";
             // 
             // Fines_stu_Control
             // 
@@ -211,5 +241,7 @@
         private Label label3;
         private Label label1;
         private DataGridView DGV_Fines;
+        private Label label2;
+        private Label label4;
     }
 }

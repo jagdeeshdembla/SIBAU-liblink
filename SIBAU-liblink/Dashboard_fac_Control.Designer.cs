@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard_fac_Control));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             pictureBox6 = new PictureBox();
             label9 = new Label();
             label_outfs = new Label();
@@ -200,9 +200,9 @@
             label4.ForeColor = Color.Gray;
             label4.Location = new Point(10, 30);
             label4.Name = "label4";
-            label4.Size = new Size(123, 14);
+            label4.Size = new Size(85, 14);
             label4.TabIndex = 42;
-            label4.Text = "Faculty / Dashboard";
+            label4.Text = "Faculty / Staff";
             // 
             // label3
             // 
@@ -264,16 +264,16 @@
             // Fac_chart
             // 
             Fac_chart.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            chartArea2.Name = "ChartArea1";
-            Fac_chart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            Fac_chart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            Fac_chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            Fac_chart.Legends.Add(legend1);
             Fac_chart.Location = new Point(4, 185);
             Fac_chart.Name = "Fac_chart";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            Fac_chart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            Fac_chart.Series.Add(series1);
             Fac_chart.Size = new Size(875, 300);
             Fac_chart.TabIndex = 88;
             Fac_chart.Text = "chart1";
@@ -305,6 +305,7 @@
             Controls.Add(label3);
             Name = "Dashboard_fac_Control";
             Size = new Size(884, 516);
+            Load += Dashboard_fac_Control_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox6).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();

@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,126 +21,189 @@ namespace SIBAU_liblink
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-        }
+            loadData();
+            DGV_MBKS.CellMouseClick += DGV_MBKS_CellMouseClick;
 
-        private void label3_Click(object sender, EventArgs e)
+        }
+        private void DGV_MBKS_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            if (e.RowIndex < 0 || e.ColumnIndex < 0 || DGV_MBKS.Columns[e.ColumnIndex].Name != "Action")
+                return;
 
+            // Get clicked cell bounds
+            Rectangle cellBounds = DGV_MBKS.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+            int btnWidth = 60;
+            int spacing = 2;
+            int btnHeight = cellBounds.Height - 8;
+
+            Rectangle btnEdit = new Rectangle(cellBounds.Left + spacing, cellBounds.Top + 4, btnWidth, btnHeight);
+            Rectangle btnDelete = new Rectangle(btnEdit.Right + spacing * 2 + btnWidth, cellBounds.Top + 4, btnWidth, btnHeight);
+
+            // Detect which button was clicked
+            Point clickPoint = DGV_MBKS.PointToClient(Cursor.Position);
+
+            // Get BookID of the clicked row
+            string bookId = DGV_MBKS.Rows[e.RowIndex].Cells["BookID"].Value.ToString();
+
+            if (btnEdit.Contains(clickPoint))
+            {
+                // 🟩 Edit Action
+                EditBook(bookId);
+            }
+            else if (btnDelete.Contains(clickPoint))
+            {
+                // 🟥 Delete Action
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this book?", "Confirm", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    DeleteBook(bookId);
+                    loadData(); // Refresh grid
+                }
+            }
         }
 
-        private void Manage_bks_Control_Load(object sender, EventArgs e)
+
+        private void DeleteBook(string bookId)
         {
-
+            string dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
+            using (SqlConnection con = new SqlConnection(dcon))
+            {
+                con.Open();
+                string query = "DELETE FROM Books WHERE BookID = @BookID";
+                SqlCommand cmd = new SqlCommand(query, con);
+                cmd.Parameters.AddWithValue("@BookID", bookId);
+                cmd.ExecuteNonQuery();
+                con.Close();
+            }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void EditBook(string bookId)
         {
-
+           
+           Edit_book edit = new Edit_book(this,bookId);
+             edit.Show();
+            
         }
-        private void ClearFields()
-        {
-            textBox1.Clear();
-            textBox7.Clear();
-            textBox2.Clear();
-            textBox3.Clear();
-            textBox6.Clear();
-            textBox4.Clear();
-            textBox5.Clear();
-            comboBox1.SelectedIndex = -1; // Unselect the dropdown
-        }
-
         private void btn_add_Click(object sender, EventArgs e)
         {
-            string query = @"INSERT INTO Books 
-            (BookID, BookName, AuthorName, Publisher, Category, ISBN, Quantity, Price) 
-            VALUES 
-            (@BookID, @BookName, @AuthorName, @Publisher, @Category, @ISBN, @Quantity, @Price)";
-            String dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
+            Add_books add = new Add_books(this);
+            add.Show();
+            loadData();
+        }
+        public void loadData()
+        {
+            string query = @"SELECT BookID,BookName,Category,Quantity AS Availability FROM Books";
+            string dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
             SqlConnection con = new SqlConnection(dcon);
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@BookID", textBox1.Text);
-            cmd.Parameters.AddWithValue("@BookName", textBox7.Text);
-            cmd.Parameters.AddWithValue("@AuthorName", textBox2.Text);
-            cmd.Parameters.AddWithValue("@Publisher", textBox3.Text);
-            cmd.Parameters.AddWithValue("@Category", comboBox1.Text);
-            cmd.Parameters.AddWithValue("@ISBN", textBox6.Text);
-            cmd.Parameters.AddWithValue("@Quantity", int.Parse(textBox4.Text));
-            cmd.Parameters.AddWithValue("@Price", decimal.Parse(textBox5.Text));
-
             con.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
+            SqlCommand cmd = new SqlCommand(query, con);
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            DGV_MBKS.DataSource = dt;
             con.Close();
+            DGV_MBKS.ReadOnly = true;
+            DGV_MBKS.AllowUserToAddRows = false;
+            DGV_MBKS.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DGV_MBKS.MultiSelect = false;
+            DGV_MBKS.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            DGV_MBKS.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            DGV_MBKS.ScrollBars = ScrollBars.Both;
 
-            if (rowsAffected > 0)
+
+
+            DGV_MBKS.DefaultCellStyle.ForeColor = Color.Black;
+            DGV_MBKS.DefaultCellStyle.Font = new Font("Segoe UI", 11, FontStyle.Bold);
+            DGV_MBKS.EnableHeadersVisualStyles = false;
+            DGV_MBKS.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            DGV_MBKS.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkSlateBlue;
+            DGV_MBKS.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+
+            if (!DGV_MBKS.Columns.Contains("Action"))
             {
-                MessageBox.Show("Book added successfully!");
-                ClearFields();
+                DataGridViewColumn actionCol = new DataGridViewTextBoxColumn();
+                actionCol.Name = "Action";
+                actionCol.HeaderText = "Action";
+                actionCol.Width = 150;
+                DGV_MBKS.Columns.Add(actionCol);
             }
-            else
-            {
-                MessageBox.Show("Failed to add book.");
-            }
+
+            // Prevent empty row if no data
+            DGV_MBKS.AllowUserToAddRows = false;
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void DGV_MBKS_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
-            string query = @"UPDATE Books SET BookName = @BookName,AuthorName = @AuthorName,Publisher = @Publisher,
-                          Category = @Category,ISBN = @ISBN,Quantity = @Quantity,Price = @Price
-                          WHERE BookID = @BookID";
-            String dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
-            SqlConnection con = new SqlConnection(dcon);
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@BookID", textBox1.Text);
-            cmd.Parameters.AddWithValue("@BookName", textBox7.Text);
-            cmd.Parameters.AddWithValue("@AuthorName", textBox2.Text);
-            cmd.Parameters.AddWithValue("@Publisher", textBox3.Text);
-            cmd.Parameters.AddWithValue("@Category", comboBox1.Text);
-            cmd.Parameters.AddWithValue("@ISBN", textBox6.Text);
-            cmd.Parameters.AddWithValue("@Quantity", int.Parse(textBox4.Text));
-            cmd.Parameters.AddWithValue("@Price", decimal.Parse(textBox5.Text));
-            con.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            con.Close();
+            if (e.RowIndex < 0 || e.ColumnIndex < 0 || DGV_MBKS.Columns[e.ColumnIndex].Name != "Action")
+                return;
 
-            if (rowsAffected > 0)
-            {
-                MessageBox.Show("Book updated successfully!");
-                ClearFields();
-            }
-            else
-            {
-                MessageBox.Show("No book found with the given Book ID.");
-            }
+            e.Paint(e.CellBounds, DataGridViewPaintParts.Background | DataGridViewPaintParts.Border);
 
+            int btnWidth = 60;
+            int spacing = 2;
+            int btnHeight = e.CellBounds.Height - 8;
+
+            Rectangle btnBlock = new Rectangle(e.CellBounds.Left + spacing, e.CellBounds.Top + 4, btnWidth, btnHeight);
+            Rectangle btnUnblock = new Rectangle(btnBlock.Right + spacing, e.CellBounds.Top + 4, btnWidth, btnHeight);
+            Rectangle btnDelete = new Rectangle(btnUnblock.Right + spacing, e.CellBounds.Top + 4, btnWidth, btnHeight);
+
+            Font btnFont = new Font("Segoe UI", 8, FontStyle.Bold);
+
+            // 🟩 Block = Green
+            DrawCustomButton(e.Graphics, btnBlock, "Edit", Color.Green, Color.White, btnFont);
+
+
+            // 🟥 Delete = Red
+            DrawCustomButton(e.Graphics, btnDelete, "Delete", Color.Red, Color.White, btnFont);
+
+            e.Handled = true;
+        }
+        private void DrawCustomButton(Graphics g, Rectangle bounds, string text, Color backColor, Color foreColor, Font font)
+        {
+            using (SolidBrush backBrush = new SolidBrush(backColor))
+            using (SolidBrush textBrush = new SolidBrush(foreColor))
+            using (Pen borderPen = new Pen(Color.Black))
+            {
+                g.FillRectangle(backBrush, bounds);
+                g.DrawRectangle(borderPen, bounds);
+
+                StringFormat sf = new StringFormat
+                {
+                    Alignment = StringAlignment.Center,
+                    LineAlignment = StringAlignment.Center
+                };
+
+                g.DrawString(text, font, textBrush, bounds, sf);
+            }
         }
 
-        private void btn_rmv_Click(object sender, EventArgs e)
+        private void DGV_MBKS_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
-            string query = "DELETE FROM Books WHERE BookID = @BookID";
-            String dcon = "Data Source=PC;Initial Catalog=Library_Management_System;Integrated Security=True;";
-            SqlConnection con = new SqlConnection(dcon);
-            SqlCommand cmd = new SqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@BookID", textBox1.Text);
-            cmd.Parameters.AddWithValue("@BookName", textBox7.Text);
-            cmd.Parameters.AddWithValue("@AuthorName", textBox2.Text);
-            cmd.Parameters.AddWithValue("@Publisher", textBox3.Text);
-            cmd.Parameters.AddWithValue("@Category", comboBox1.Text);
-            cmd.Parameters.AddWithValue("@ISBN", textBox6.Text);
-            cmd.Parameters.AddWithValue("@Quantity", int.Parse(textBox4.Text));
-            cmd.Parameters.AddWithValue("@Price", decimal.Parse(textBox5.Text));
-            con.Open();
-            int rowsAffected = cmd.ExecuteNonQuery();
-            con.Close();
-
-            if (rowsAffected > 0)
+            if (e.RowIndex < 0 || e.ColumnIndex < 0 || DGV_MBKS.Columns[e.ColumnIndex].Name != "Action")
             {
-                MessageBox.Show("Book deleted successfully!");
-                ClearFields();
+                DGV_MBKS.Cursor = Cursors.Default;
+                return;
+            }
+
+            int btnWidth = 60;
+            int spacing = 5;
+            int btnHeight = DGV_MBKS.Rows[e.RowIndex].Cells[e.ColumnIndex].Size.Height - 8;
+
+            Rectangle cellBounds = DGV_MBKS.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, false);
+            Rectangle btnBlock = new Rectangle(cellBounds.Left + spacing, cellBounds.Top + 4, btnWidth, btnHeight);
+            Rectangle btnUnblock = new Rectangle(btnBlock.Right + spacing, cellBounds.Top + 4, btnWidth, btnHeight);
+            Rectangle btnDelete = new Rectangle(btnUnblock.Right + spacing, cellBounds.Top + 4, btnWidth, btnHeight);
+
+            Point mousePosition = DGV_MBKS.PointToClient(Cursor.Position);
+
+            if (btnBlock.Contains(mousePosition) || btnUnblock.Contains(mousePosition) || btnDelete.Contains(mousePosition))
+            {
+                DGV_MBKS.Cursor = Cursors.Hand;
             }
             else
             {
-                MessageBox.Show("No book found with the given Book ID.");
+                DGV_MBKS.Cursor = Cursors.Default;
             }
         }
     }

@@ -65,7 +65,7 @@ namespace SIBAU_liblink
             Form1 f1 = new Form1();
             f1.Show();
             Form2 f2 = new Form2();
-            f2.Hide();
+            f2.Close();
         }
 
         private void btn_abt_Click(object sender, EventArgs e)
@@ -95,7 +95,7 @@ namespace SIBAU_liblink
 
         private void btn_bbk_Click(object sender, EventArgs e)
         {
-            LoadUserControl(new Borrowed_bks_Control());
+            LoadUserControl(new Fines_bks_Control());
         }
 
         private void btn_tbk_Click(object sender, EventArgs e)
@@ -244,6 +244,21 @@ namespace SIBAU_liblink
             GraphicsPath path = new GraphicsPath();
             path.AddEllipse(0, 0, pictureBox3.Width, pictureBox3.Height);
             pictureBox3.Region = new Region(path);
+        }
+
+        private void btn_act_MouseEnter(object sender, EventArgs e)
+        {
+            btn_act.ForeColor = Color.FromArgb(69, 170, 242);
+        }
+
+        private void btn_act_MouseLeave(object sender, EventArgs e)
+        {
+            this.btn_act.ForeColor = Color.White;
+        }
+
+        private void btn_act_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(new Manage_acts());
         }
     }
 }

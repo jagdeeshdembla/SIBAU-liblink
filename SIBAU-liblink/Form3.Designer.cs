@@ -96,7 +96,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(856, 10);
+            label2.Location = new Point(829, 10);
             label2.Name = "label2";
             label2.Size = new Size(70, 21);
             label2.TabIndex = 10;
@@ -130,7 +130,7 @@
             btn_notification.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btn_notification.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btn_notification.FlatStyle = FlatStyle.Flat;
-            btn_notification.Location = new Point(812, 8);
+            btn_notification.Location = new Point(787, 8);
             btn_notification.Name = "btn_notification";
             btn_notification.Size = new Size(26, 26);
             btn_notification.TabIndex = 8;
@@ -147,7 +147,7 @@
             btn_email.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btn_email.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btn_email.FlatStyle = FlatStyle.Flat;
-            btn_email.Location = new Point(766, 6);
+            btn_email.Location = new Point(741, 6);
             btn_email.Name = "btn_email";
             btn_email.Size = new Size(30, 30);
             btn_email.TabIndex = 7;
@@ -487,6 +487,7 @@
             Name = "Form3";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Student DashBoard";
+            WindowState = FormWindowState.Maximized;
             panel_mbar.ResumeLayout(false);
             panel_mbar.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();

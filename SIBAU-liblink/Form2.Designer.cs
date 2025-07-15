@@ -59,6 +59,8 @@
             btn_tms = new Button();
             btn_mbk = new Button();
             panel_sbar = new Panel();
+            btn_act = new Button();
+            pictureBox9 = new PictureBox();
             btn_sbk = new Button();
             pictureBox8 = new PictureBox();
             panel_Container = new Panel();
@@ -75,6 +77,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox17).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox18).BeginInit();
             panel_sbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).BeginInit();
             SuspendLayout();
             // 
@@ -145,7 +148,7 @@
             btn_email.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btn_email.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btn_email.FlatStyle = FlatStyle.Flat;
-            btn_email.Location = new Point(770, 5);
+            btn_email.Location = new Point(761, 5);
             btn_email.Name = "btn_email";
             btn_email.Size = new Size(30, 30);
             btn_email.TabIndex = 7;
@@ -162,7 +165,7 @@
             btn_notification.FlatAppearance.MouseDownBackColor = Color.Transparent;
             btn_notification.FlatAppearance.MouseOverBackColor = Color.Transparent;
             btn_notification.FlatStyle = FlatStyle.Flat;
-            btn_notification.Location = new Point(823, 8);
+            btn_notification.Location = new Point(809, 8);
             btn_notification.Name = "btn_notification";
             btn_notification.Size = new Size(26, 26);
             btn_notification.TabIndex = 8;
@@ -213,7 +216,7 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(864, 11);
+            label2.Location = new Point(854, 11);
             label2.Name = "label2";
             label2.Size = new Size(61, 21);
             label2.TabIndex = 0;
@@ -223,7 +226,7 @@
             // 
             pictureBox1.BackColor = Color.Transparent;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(11, 20);
+            pictureBox1.Location = new Point(3, 20);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(38, 25);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -241,9 +244,9 @@
             btn_db.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_db.ForeColor = Color.White;
             btn_db.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_db.Location = new Point(52, 19);
+            btn_db.Location = new Point(44, 19);
             btn_db.Name = "btn_db";
-            btn_db.Size = new Size(144, 27);
+            btn_db.Size = new Size(154, 27);
             btn_db.TabIndex = 11;
             btn_db.Text = "Dashboard";
             btn_db.TextAlign = ContentAlignment.MiddleLeft;
@@ -256,7 +259,7 @@
             // 
             pictureBox2.BackColor = Color.Transparent;
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(13, 209);
+            pictureBox2.Location = new Point(5, 241);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(38, 25);
             pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
@@ -274,11 +277,11 @@
             btn_bbk.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_bbk.ForeColor = Color.White;
             btn_bbk.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_bbk.Location = new Point(51, 209);
+            btn_bbk.Location = new Point(43, 241);
             btn_bbk.Name = "btn_bbk";
-            btn_bbk.Size = new Size(145, 27);
+            btn_bbk.Size = new Size(155, 27);
             btn_bbk.TabIndex = 13;
-            btn_bbk.Text = "Borrowed Books";
+            btn_bbk.Text = "Fines Books";
             btn_bbk.TextAlign = ContentAlignment.MiddleLeft;
             btn_bbk.UseVisualStyleBackColor = false;
             btn_bbk.Click += btn_bbk_Click;
@@ -289,7 +292,7 @@
             // 
             pictureBox4.BackColor = Color.Transparent;
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(14, 249);
+            pictureBox4.Location = new Point(6, 281);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(38, 25);
             pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
@@ -307,9 +310,9 @@
             btn_tbk.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_tbk.ForeColor = Color.White;
             btn_tbk.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_tbk.Location = new Point(54, 247);
+            btn_tbk.Location = new Point(46, 279);
             btn_tbk.Name = "btn_tbk";
-            btn_tbk.Size = new Size(142, 27);
+            btn_tbk.Size = new Size(152, 27);
             btn_tbk.TabIndex = 15;
             btn_tbk.Text = "Total Books";
             btn_tbk.TextAlign = ContentAlignment.MiddleLeft;
@@ -322,7 +325,7 @@
             // 
             pictureBox5.BackColor = Color.Transparent;
             pictureBox5.Image = (Image)resources.GetObject("pictureBox5.Image");
-            pictureBox5.Location = new Point(15, 319);
+            pictureBox5.Location = new Point(7, 351);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(38, 25);
             pictureBox5.SizeMode = PictureBoxSizeMode.Zoom;
@@ -340,9 +343,9 @@
             btn_rpt.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_rpt.ForeColor = Color.White;
             btn_rpt.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_rpt.Location = new Point(55, 319);
+            btn_rpt.Location = new Point(47, 351);
             btn_rpt.Name = "btn_rpt";
-            btn_rpt.Size = new Size(141, 27);
+            btn_rpt.Size = new Size(151, 27);
             btn_rpt.TabIndex = 17;
             btn_rpt.Text = "Report";
             btn_rpt.TextAlign = ContentAlignment.MiddleLeft;
@@ -355,7 +358,7 @@
             // 
             pictureBox7.BackColor = Color.Transparent;
             pictureBox7.Image = (Image)resources.GetObject("pictureBox7.Image");
-            pictureBox7.Location = new Point(17, 359);
+            pictureBox7.Location = new Point(9, 391);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(38, 25);
             pictureBox7.SizeMode = PictureBoxSizeMode.Zoom;
@@ -373,9 +376,9 @@
             btn_abt.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_abt.ForeColor = Color.White;
             btn_abt.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_abt.Location = new Point(56, 359);
+            btn_abt.Location = new Point(48, 391);
             btn_abt.Name = "btn_abt";
-            btn_abt.Size = new Size(140, 27);
+            btn_abt.Size = new Size(150, 27);
             btn_abt.TabIndex = 21;
             btn_abt.Text = "About";
             btn_abt.TextAlign = ContentAlignment.MiddleLeft;
@@ -388,7 +391,7 @@
             // 
             pictureBox6.BackColor = Color.Transparent;
             pictureBox6.Image = (Image)resources.GetObject("pictureBox6.Image");
-            pictureBox6.Location = new Point(12, 133);
+            pictureBox6.Location = new Point(4, 165);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(38, 25);
             pictureBox6.SizeMode = PictureBoxSizeMode.Zoom;
@@ -406,9 +409,9 @@
             btn_ibk.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_ibk.ForeColor = Color.White;
             btn_ibk.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_ibk.Location = new Point(52, 131);
+            btn_ibk.Location = new Point(44, 163);
             btn_ibk.Name = "btn_ibk";
-            btn_ibk.Size = new Size(144, 27);
+            btn_ibk.Size = new Size(154, 27);
             btn_ibk.TabIndex = 23;
             btn_ibk.Text = "Issue Books";
             btn_ibk.TextAlign = ContentAlignment.MiddleLeft;
@@ -421,7 +424,7 @@
             // 
             pictureBox16.BackColor = Color.Transparent;
             pictureBox16.Image = (Image)resources.GetObject("pictureBox16.Image");
-            pictureBox16.Location = new Point(12, 172);
+            pictureBox16.Location = new Point(4, 204);
             pictureBox16.Name = "pictureBox16";
             pictureBox16.Size = new Size(38, 25);
             pictureBox16.SizeMode = PictureBoxSizeMode.Zoom;
@@ -439,9 +442,9 @@
             btn_rbk.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_rbk.ForeColor = Color.White;
             btn_rbk.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_rbk.Location = new Point(52, 170);
+            btn_rbk.Location = new Point(44, 202);
             btn_rbk.Name = "btn_rbk";
-            btn_rbk.Size = new Size(144, 27);
+            btn_rbk.Size = new Size(154, 27);
             btn_rbk.TabIndex = 25;
             btn_rbk.Text = "Return Books";
             btn_rbk.TextAlign = ContentAlignment.MiddleLeft;
@@ -454,7 +457,7 @@
             // 
             pictureBox17.BackColor = Color.Transparent;
             pictureBox17.Image = (Image)resources.GetObject("pictureBox17.Image");
-            pictureBox17.Location = new Point(13, 59);
+            pictureBox17.Location = new Point(5, 91);
             pictureBox17.Name = "pictureBox17";
             pictureBox17.Size = new Size(38, 25);
             pictureBox17.SizeMode = PictureBoxSizeMode.Zoom;
@@ -465,7 +468,7 @@
             // 
             pictureBox18.BackColor = Color.Transparent;
             pictureBox18.Image = (Image)resources.GetObject("pictureBox18.Image");
-            pictureBox18.Location = new Point(15, 284);
+            pictureBox18.Location = new Point(7, 316);
             pictureBox18.Name = "pictureBox18";
             pictureBox18.Size = new Size(38, 25);
             pictureBox18.SizeMode = PictureBoxSizeMode.Zoom;
@@ -483,9 +486,9 @@
             btn_tms.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_tms.ForeColor = Color.White;
             btn_tms.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_tms.Location = new Point(55, 282);
+            btn_tms.Location = new Point(47, 314);
             btn_tms.Name = "btn_tms";
-            btn_tms.Size = new Size(141, 27);
+            btn_tms.Size = new Size(151, 27);
             btn_tms.TabIndex = 29;
             btn_tms.Text = "Total Members";
             btn_tms.TextAlign = ContentAlignment.MiddleLeft;
@@ -505,9 +508,9 @@
             btn_mbk.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_mbk.ForeColor = Color.White;
             btn_mbk.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_mbk.Location = new Point(51, 57);
+            btn_mbk.Location = new Point(43, 89);
             btn_mbk.Name = "btn_mbk";
-            btn_mbk.Size = new Size(145, 27);
+            btn_mbk.Size = new Size(155, 27);
             btn_mbk.TabIndex = 30;
             btn_mbk.Text = "Manage Books";
             btn_mbk.TextAlign = ContentAlignment.MiddleLeft;
@@ -522,6 +525,8 @@
             panel_sbar.BackgroundImage = (Image)resources.GetObject("panel_sbar.BackgroundImage");
             panel_sbar.BackgroundImageLayout = ImageLayout.Stretch;
             panel_sbar.BorderStyle = BorderStyle.Fixed3D;
+            panel_sbar.Controls.Add(btn_act);
+            panel_sbar.Controls.Add(pictureBox9);
             panel_sbar.Controls.Add(btn_sbk);
             panel_sbar.Controls.Add(pictureBox8);
             panel_sbar.Controls.Add(btn_mbk);
@@ -545,8 +550,41 @@
             panel_sbar.Dock = DockStyle.Left;
             panel_sbar.Location = new Point(0, 45);
             panel_sbar.Name = "panel_sbar";
-            panel_sbar.Size = new Size(200, 516);
+            panel_sbar.Size = new Size(205, 516);
             panel_sbar.TabIndex = 2;
+            // 
+            // btn_act
+            // 
+            btn_act.BackColor = Color.Transparent;
+            btn_act.Cursor = Cursors.Hand;
+            btn_act.FlatAppearance.BorderSize = 0;
+            btn_act.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            btn_act.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            btn_act.FlatStyle = FlatStyle.Flat;
+            btn_act.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_act.ForeColor = Color.White;
+            btn_act.ImageAlign = ContentAlignment.MiddleLeft;
+            btn_act.Location = new Point(43, 52);
+            btn_act.Name = "btn_act";
+            btn_act.Size = new Size(155, 27);
+            btn_act.TabIndex = 34;
+            btn_act.Text = "Manage Accounts";
+            btn_act.TextAlign = ContentAlignment.MiddleLeft;
+            btn_act.UseVisualStyleBackColor = false;
+            btn_act.Click += btn_act_Click;
+            btn_act.MouseEnter += btn_act_MouseEnter;
+            btn_act.MouseLeave += btn_act_MouseLeave;
+            // 
+            // pictureBox9
+            // 
+            pictureBox9.BackColor = Color.Transparent;
+            pictureBox9.Image = (Image)resources.GetObject("pictureBox9.Image");
+            pictureBox9.Location = new Point(5, 54);
+            pictureBox9.Name = "pictureBox9";
+            pictureBox9.Size = new Size(38, 25);
+            pictureBox9.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox9.TabIndex = 33;
+            pictureBox9.TabStop = false;
             // 
             // btn_sbk
             // 
@@ -559,9 +597,9 @@
             btn_sbk.Font = new Font("Microsoft YaHei UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_sbk.ForeColor = Color.White;
             btn_sbk.ImageAlign = ContentAlignment.MiddleLeft;
-            btn_sbk.Location = new Point(52, 95);
+            btn_sbk.Location = new Point(44, 127);
             btn_sbk.Name = "btn_sbk";
-            btn_sbk.Size = new Size(144, 27);
+            btn_sbk.Size = new Size(154, 27);
             btn_sbk.TabIndex = 32;
             btn_sbk.Text = "Search Books";
             btn_sbk.TextAlign = ContentAlignment.MiddleLeft;
@@ -574,7 +612,7 @@
             // 
             pictureBox8.BackColor = Color.Transparent;
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(12, 97);
+            pictureBox8.Location = new Point(4, 129);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(38, 25);
             pictureBox8.SizeMode = PictureBoxSizeMode.Zoom;
@@ -584,9 +622,9 @@
             // panel_Container
             // 
             panel_Container.Dock = DockStyle.Fill;
-            panel_Container.Location = new Point(200, 45);
+            panel_Container.Location = new Point(205, 45);
             panel_Container.Name = "panel_Container";
-            panel_Container.Size = new Size(884, 516);
+            panel_Container.Size = new Size(879, 516);
             panel_Container.TabIndex = 3;
             panel_Container.Paint += panel_Container_Paint;
             // 
@@ -603,6 +641,7 @@
             Name = "Form2";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin DashBoard";
+            WindowState = FormWindowState.Maximized;
             Load += Form2_Load;
             ctms.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -618,6 +657,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox17).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox18).EndInit();
             panel_sbar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox9).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox8).EndInit();
             ResumeLayout(false);
         }
@@ -655,5 +695,7 @@
         private Button btn_sbk;
         private PictureBox pictureBox8;
         private Label label2;
+        private Button btn_act;
+        private PictureBox pictureBox9;
     }
 }

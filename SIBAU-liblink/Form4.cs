@@ -88,7 +88,7 @@ namespace SIBAU_liblink
             Form1 f1 = new Form1();
             f1.Show();
             Form4 f4 = new Form4();
-            f4.Hide();
+            f4.Close();
         }
 
         private void btn_db_MouseEnter(object sender, EventArgs e)

@@ -18,7 +18,7 @@ namespace SIBAU_liblink
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
-            IssuedBook();
+            //IssuedBook();
 
         }
         private void IssuedBook()

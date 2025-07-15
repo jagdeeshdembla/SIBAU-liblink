@@ -46,9 +46,9 @@
             // 
             pictureBox8.BackColor = Color.Transparent;
             pictureBox8.Image = (Image)resources.GetObject("pictureBox8.Image");
-            pictureBox8.Location = new Point(4, 4);
+            pictureBox8.Location = new Point(4, 3);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(140, 92);
+            pictureBox8.Size = new Size(100, 70);
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox8.TabIndex = 93;
             pictureBox8.TabStop = false;
@@ -58,11 +58,11 @@
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Arial Rounded MT Bold", 24F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Font = new Font("Arial Rounded MT Bold", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(367, 7);
+            label3.Location = new Point(364, 7);
             label3.Name = "label3";
-            label3.Size = new Size(199, 37);
+            label3.Size = new Size(148, 28);
             label3.TabIndex = 94;
             label3.Text = "Total Books";
             // 
@@ -73,7 +73,7 @@
             panel_top.Dock = DockStyle.Top;
             panel_top.Location = new Point(0, 0);
             panel_top.Name = "panel_top";
-            panel_top.Size = new Size(884, 100);
+            panel_top.Size = new Size(884, 78);
             panel_top.TabIndex = 72;
             panel_top.Paint += panel_top_Paint;
             // 
@@ -94,7 +94,7 @@
             label4.BackColor = Color.Transparent;
             label4.Font = new Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(476, 12);
+            label4.Location = new Point(518, 12);
             label4.Name = "label4";
             label4.Size = new Size(22, 24);
             label4.TabIndex = 97;
@@ -107,7 +107,7 @@
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Arial Rounded MT Bold", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(332, 12);
+            label1.Location = new Point(374, 12);
             label1.Name = "label1";
             label1.Size = new Size(137, 24);
             label1.TabIndex = 96;
@@ -118,9 +118,9 @@
             DGV_tbk.BackgroundColor = Color.White;
             DGV_tbk.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             DGV_tbk.Dock = DockStyle.Fill;
-            DGV_tbk.Location = new Point(0, 100);
+            DGV_tbk.Location = new Point(0, 78);
             DGV_tbk.Name = "DGV_tbk";
-            DGV_tbk.Size = new Size(884, 366);
+            DGV_tbk.Size = new Size(884, 388);
             DGV_tbk.TabIndex = 74;
             // 
             // Total_bks_Control
